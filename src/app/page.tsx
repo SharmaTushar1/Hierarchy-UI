@@ -1,7 +1,9 @@
+import PageClient from "./page.client";
+
 export default function Home() {
   return (
     <main>
-      Main Page
+      <PageClient />
     </main>
   )
 }

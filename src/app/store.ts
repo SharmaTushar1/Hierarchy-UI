@@ -1,7 +1,10 @@
 import { create } from 'zustand';
 
-const useStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state: any) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
+interface Type {
+  employees: employee[]
+}
+
+export const useStore = create<Type>((set) => ({
+  employees: [],
+  setEmployees: (newValue: employee[]) => set({employees: newValue})
 }))
