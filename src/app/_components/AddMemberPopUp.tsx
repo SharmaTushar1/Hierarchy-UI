@@ -21,7 +21,6 @@ const AddMemberPopUp = ({toggle}: {toggle: () => void}) => {
       existingEmployees.push(data); // adding new employee to old employees list
       setEmployees(existingEmployees);
       localStorage.setItem('employees', JSON.stringify(existingEmployees)); // Storing in localstorage
-      console.log("existing employees => ", existingEmployees);
   };
 
   return (

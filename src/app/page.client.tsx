@@ -19,6 +19,8 @@ const PageClient = () => {
   const removeEmployee = (employee_id: number) => {
     const updatedArray = employees.filter((prev) => prev.id !== employee_id);
     setEmployees(updatedArray);
+    localStorage.setItem('employees', JSON.stringify(updatedArray)); // and update the local storage also.
+    // TODO: Check every time I am using setEmployees I'm also updating the local storage 'employees'
   }
 
   return (
