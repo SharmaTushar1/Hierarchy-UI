@@ -1,6 +1,6 @@
 type position = {
   id: number,
-  position_name: string,
+  name: string,
 }
 
 // The id I'll add manually but in actual database for the employees it will be uuid() or something
