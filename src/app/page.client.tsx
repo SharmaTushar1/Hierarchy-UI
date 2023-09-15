@@ -18,12 +18,12 @@ const PageClient = () => {
       {employees.length === 0 ? (<button className="m-8" onClick={() => toggleAddMemberPopUp()}>Add Member</button>): (
         employees.map((employee) => (
           <div key={employee.id}>
-            <div>{employee.id}</div>
-            <div>{employee.email}</div>
-            <div>{employee.name}</div>
-            <div>{employee.phone_number}</div>
-            <div>{employee.position_id}</div>
-            
+            <div>Employee Id: {employee.id}</div>
+            <div>Email: {employee.email}</div>
+            <div>Name: {employee.name}</div>
+            <div>Phone Number: {employee.phone_number}</div>
+            <div>Position: {employee.position}</div>
+
           </div>
         ))
       )}

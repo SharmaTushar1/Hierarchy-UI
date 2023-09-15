@@ -46,8 +46,8 @@ const AddMemberPopUp = ({toggle}: {toggle: () => void}) => {
 
           <div>
             <label htmlFor="phone_number">Phone Number: </label>
-            <input placeholder="Phone Number" id="phone_number" {...register('phoneNumber', { required: 'Phone number is required', validate: validatePhoneNumber })} />
-            {errors.phoneNumber && <span>{errors.phoneNumber.message as string}</span>}
+            <input placeholder="Phone Number" id="phone_number" {...register('phone_number', { required: 'Phone number is required', validate: validatePhoneNumber })} />
+            {errors.phone_number && <span>{errors.phone_number.message as string}</span>}
           </div>
 
           <div>
@@ -58,10 +58,11 @@ const AddMemberPopUp = ({toggle}: {toggle: () => void}) => {
 
           <div>
             <label htmlFor="position">Position:</label>
+            {/* Storing name here but will change that to id */}
             <select id="position" {...register('position', { required: 'Position is required' })}>
               {positions.map((position, index) => (
-                  <option key={index} value={position.name}>
-                      {position.name}
+                  <option key={index} value={position}>
+                      {position}
                   </option>
               ))}
             </select>
