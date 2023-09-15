@@ -8,7 +8,14 @@ type position = {
 type employee = {
   id: number,
   name: string,
-  position_id: string,
+  position: string,
   phone_number: string,
   email: string,
+}
+
+type team = {
+  id: number,
+  name: string,
+  employees: employee[],
+  leader_id: number, // id of the employee who is the leader
 }
