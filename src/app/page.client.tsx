@@ -18,29 +18,40 @@ const PageClient = () => {
 
   // TODO: Make the employee_id and all other ids unique it is making multiple right now.
 
-  const removeEmployee = (employee_id: number) => {
-    const updatedArray = employees.filter((prev) => prev.id !== employee_id);
-    setEmployees(updatedArray);
-    localStorage.setItem('employees', JSON.stringify(updatedArray)); // and update the local storage also.
+  const removeEmployee = (employee_id: string) => {
+    const updateEmployeesObject = {...employees};
+    delete updateEmployeesObject[employee_id];
+    console.log(updateEmployeesObject);
+    setEmployees(updateEmployeesObject);
+    localStorage.setItem('employees', JSON.stringify(employees || {})); // and update the local storage also.
     // TODO: Check every time I am using setEmployees I'm also updating the local storage 'employees'
   }
 
+  const editEmployee = (employee_id: string) => {
+    console.log("Edit")
+  }
+
+  const hideEditPopUp = () => {
+    setEditMemberPopUp(prev => !prev);
+  }
   return (
     <div>
-      {employees.length === 0 ? (<button className="m-8" onClick={() => toggleAddMemberPopUp()}>Add Member</button>): (
+      {Object.values(employees).length == 0 ? (<button className="m-8" onClick={() => toggleAddMemberPopUp()}>Add Member</button>): (
         <div>
-          {employees.map((employee) => (
-            <div key={employee.id} className="mb-8">
-              <div>
-                <div>Employee Id: {employee.id}</div>
-                <div>Email: {employee.email}</div>
-                <div>Name: {employee.name}</div>
-                <div>Phone Number: {employee.phone_number}</div>
-                <div>Position: {employee.position}</div>
+          {Object.keys(employees).map((emp_id) => (
+            employees[emp_id] && (
+              <div key={emp_id} className="mb-8">
+                <div>
+                  <div>Employee Id: {emp_id}</div>
+                  <div>Email: {employees[emp_id].email}</div>
+                  <div>Name: {employees[emp_id].name}</div>
+                  <div>Phone Number: {employees[emp_id].phone_number}</div>
+                  <div>Position: {employees[emp_id].position}</div>
+                </div>
+                <span onClick={() => removeEmployee(emp_id)}>X</span>
+                <Edit onClick={() => editEmployee(emp_id)} />
               </div>
-              <span onClick={() => removeEmployee(employee.id)}>X</span>
-              <Edit />
-            </div>
+            )
           ))}
         </div>
       )}

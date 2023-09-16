@@ -16,11 +16,10 @@ const AddMemberPopUp = ({toggle}: {toggle: () => void}) => {
   const validateEmail = (value: string) => /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value) || 'Invalid email';
 
 
-  const onSubmit = (data: any) => { // TODO: take care of this for now just using any
-      const existingEmployees: employee[] = employees;
-      existingEmployees.push(data); // adding new employee to old employees list
-      setEmployees(existingEmployees);
-      localStorage.setItem('employees', JSON.stringify(existingEmployees)); // Storing in localstorage
+  const onSubmit = (employeeData: any) => { // TODO: take care of this for now just using any
+    employees[employeeData.id] = {name: employeeData.name, email: employeeData.email, position: employeeData.position, phone_number: employeeData.phone_number}
+    setEmployees(employees);
+    localStorage.setItem('employees', JSON.stringify(employees)); // Storing in localstorage
   };
 
   return (
