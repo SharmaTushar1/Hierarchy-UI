@@ -58,7 +58,7 @@ const AddMemberPopUp = ({toggle}: {toggle: () => void}) => {
             <label htmlFor="position">Position:</label>
             {/* Storing name here but will change that to id */}
             <select id="position" {...register('position', { required: 'Position is required' })}>
-              {positions.map((position, index) => (
+              {Object.keys(positions).map((position, index) => (
                   <option key={index} value={position}>
                       {position}
                   </option>

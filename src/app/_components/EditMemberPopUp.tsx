@@ -28,7 +28,7 @@ const EditMemberPopUp = ({employee_id,  toggle}: Props) => {
     const newEmployeeDetails = {email: data.email, name: data.name, phone_number: data.phone_number, position: data.position}
     updateEmployeeObject[employee_id] = newEmployeeDetails;
     setEmployees(updateEmployeeObject);
-    localStorage.setItem('employees', JSON.stringify(employees)); // Storing in localstorage
+    localStorage.setItem('employees', JSON.stringify(updateEmployeeObject)); // Storing in localstorage
   };
 
   return (
@@ -65,7 +65,7 @@ const EditMemberPopUp = ({employee_id,  toggle}: Props) => {
             <label htmlFor="position">Position:</label>
             {/* Storing name here but will change that to id */}
             <select id="position" {...register('position', { required: 'Position is required' })}>
-              {positions.map((position, index) => (
+              {Array.from(Object.keys(positions)).map((position, index) => (
                   <option key={index} value={position}>
                       {position}
                   </option>

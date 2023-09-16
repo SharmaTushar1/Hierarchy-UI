@@ -1,7 +1,11 @@
 type Position = {
-  id: string,
-  name: string,
-}
+  'CEO': string[];
+  'Head of Staff': string[];
+  'Head of Engineering': string[];
+  'Head of Design': string[];
+  'Team Leader': string[];
+  'Team Member': string[];
+};
 
 type Employees = {
   [id: string]: {

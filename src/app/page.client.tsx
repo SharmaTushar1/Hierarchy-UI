@@ -25,7 +25,7 @@ const PageClient = () => {
     delete updateEmployeesObject[employee_id];
     console.log(updateEmployeesObject);
     setEmployees(updateEmployeesObject);
-    localStorage.setItem('employees', JSON.stringify(employees || {})); // and update the local storage also.
+    localStorage.setItem('employees', JSON.stringify(updateEmployeesObject || {})); // and update the local storage also.
     // TODO: Check every time I am using setEmployees I'm also updating the local storage 'employees'
   }
 
