@@ -11,6 +11,8 @@ const PageClient = () => {
   const employees = useStore(store => store.employees);
   const setEmployees = useStore(store => store.setEmployees);
   const [addMemberPopUp, setAddMemberPopUp] = useState(false);
+  const [editMemberPopUp, setEditMemberPopUp] = useState(false);
+  const [currenEmployeeId, setCurrentEmployeeId] = useState<string>('');
 
   const toggleAddMemberPopUp = () => {
     setAddMemberPopUp(prev => !prev);
@@ -28,12 +30,15 @@ const PageClient = () => {
   }
 
   const editEmployee = (employee_id: string) => {
-    console.log("Edit")
+    setEditMemberPopUp(true);
+    setCurrentEmployeeId(employee_id);
   }
 
   const hideEditPopUp = () => {
     setEditMemberPopUp(prev => !prev);
   }
+  console.log("employees => ", employees);
+  console.log("len => ",Object.values(employees).length);
   return (
     <div>
       {Object.values(employees).length == 0 ? (<button className="m-8" onClick={() => toggleAddMemberPopUp()}>Add Member</button>): (
@@ -56,6 +61,7 @@ const PageClient = () => {
         </div>
       )}
       {addMemberPopUp && <AddMemberPopUp toggle={toggleAddMemberPopUp} />}
+      {editMemberPopUp && <EditMemberPopUp employee_id = {currenEmployeeId} toggle = {hideEditPopUp} />}
     </div>
   )
 }
