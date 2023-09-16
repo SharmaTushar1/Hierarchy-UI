@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useStore } from "./store";
 import AddMemberPopUp from "./_components/AddMemberPopUp";
+import Edit from "@mui/icons-material/Edit";
+import EditMemberPopUp from "./_components/EditMemberPopUp";
 
 const PageClient = () => {
 
@@ -37,7 +39,7 @@ const PageClient = () => {
                 <div>Position: {employee.position}</div>
               </div>
               <span onClick={() => removeEmployee(employee.id)}>X</span>
-              {/* <span onClick={() => setEmployees((prevEmpArray) => prevEmpArray.filter(prev => prev.id!==employee.id))}>X</span> */}
+              <Edit />
             </div>
           ))}
         </div>
