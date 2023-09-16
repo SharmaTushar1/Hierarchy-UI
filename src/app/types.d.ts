@@ -13,8 +13,8 @@ type Employees = {
 }
 
 type Team = {
-  id: string,
-  name: string,
-  employees: employee[],
-  leader_id: number, // id of the employee who is the leader
+  [name: string]: {
+    employees: employee[],
+    leader_id: number, // id of the employee who is the leader
+  }
 }
